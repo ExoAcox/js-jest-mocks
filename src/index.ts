@@ -36,6 +36,8 @@ import { Polyline } from "./drawing/polygons/polyline";
 import { SearchBox } from "./places/searchbox";
 import { Size } from "./maps/coordinates/size";
 import { VisibleRegion } from "./maps/maps/visibleregion";
+import { DirectionsService } from "./drawing/directions/service";
+import { DirectionsRenderer } from "./drawing/directions/renderer";
 import { StreetViewCoverageLayer } from "./street-view/rendering/coverage";
 import { StreetViewPanorama } from "./street-view/rendering/panorama";
 import {
@@ -48,6 +50,7 @@ import { ControlPosition } from "./maps/controls/controlposition";
 import { MapTypeId } from "./maps/maps/constants";
 import { InfoWindow_ } from "./maps/infowindow/infowindow";
 import { event } from "./maps/event/event";
+import { spherical } from "./maps/geometry/spherical";
 import { mockInstances } from "./registry";
 
 const initialize = function (): void {
@@ -77,6 +80,9 @@ const initialize = function (): void {
         Autocomplete: Autocomplete,
         SearchBox: SearchBox,
       },
+      geometry: {
+        spherical:  spherical
+      },
       Polygon: Polygon,
       Polyline: Polyline,
       Circle: Circle,
@@ -85,6 +91,8 @@ const initialize = function (): void {
       MapCanvasProjection: MapCanvasProjection,
       MapPanes: MapPanes,
       VisibleRegion: VisibleRegion,
+      DirectionsService: DirectionsService,
+      DirectionsRenderer: DirectionsRenderer,
       InfoWindow: InfoWindow_,
     },
   };
@@ -94,6 +102,7 @@ export {
   Circle,
   Data,
   event,
+  spherical,
   Feature,
   LatLng,
   LatLngBounds,
@@ -113,6 +122,8 @@ export {
   StreetViewPanorama,
   StreetViewService,
   VisibleRegion,
+  DirectionsService,
+  DirectionsRenderer,
   InfoWindow_ as InfoWindow,
   mockInstances,
   initialize,
