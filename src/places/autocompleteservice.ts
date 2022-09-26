@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { MVCObject } from "../../maps/event/mvcobject";
+import { MVCObject } from "../maps/event/mvcobject";
 
 export class AutocompleteService extends MVCObject implements google.maps.Data {
     constructor(opt?: google.maps.Data.DataOptions | null) {

@@ -28,6 +28,8 @@ import { KmlLayer } from "./drawing/kml/kmllayer";
 import { Point } from "./maps/coordinates/point";
 import { Polygon } from "./drawing/polygons/polygon";
 import { Polyline } from "./drawing/polygons/polyline";
+import { AutocompleteService } from "./places/autocompleteservice";
+import { PlacesService } from "./places/placesservice";
 import { Size } from "./maps/coordinates/size";
 import { VisibleRegion } from "./maps/maps/visibleregion";
 import { DirectionsService } from "./drawing/directions/service";
@@ -40,4 +42,8 @@ import { event } from "./maps/event/event";
 import { spherical } from "./maps/geometry/spherical";
 import { mockInstances } from "./registry";
 declare const initialize: () => void;
-export { Circle, Data, event, spherical, Feature, LatLng, LatLngBounds, MVCArray, MVCObject, MapCanvasProjection, MapPanes, Map_ as Map, Marker, OverlayView, KmlLayer, Point, Polygon, Polyline, Size, StreetViewCoverageLayer, StreetViewPanorama, StreetViewService, VisibleRegion, DirectionsService, DirectionsRenderer, InfoWindow_ as InfoWindow, mockInstances, initialize, };
+declare const places: {
+    AutocompleteService: typeof AutocompleteService;
+    PlacesService: typeof PlacesService;
+};
+export { Circle, Data, event, spherical, Feature, LatLng, LatLngBounds, MVCArray, MVCObject, MapCanvasProjection, MapPanes, Map_ as Map, Marker, OverlayView, KmlLayer, Point, Polygon, Polyline, Size, StreetViewCoverageLayer, StreetViewPanorama, StreetViewService, VisibleRegion, DirectionsService, DirectionsRenderer, InfoWindow_ as InfoWindow, places, mockInstances, initialize, };

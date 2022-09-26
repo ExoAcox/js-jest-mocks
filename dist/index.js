@@ -1116,6 +1116,49 @@ class SearchBox extends MVCObject {
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+class AutocompleteService extends MVCObject {
+    constructor(opt) {
+        super();
+        this.getPlacePredictions = jest.fn().mockImplementation();
+    }
+}
+
+/**
+ * Copyright 2022 Google LLC. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+class PlacesService extends MVCObject {
+    constructor(opt) {
+        super();
+    }
+}
+
+/**
+ * Copyright 2022 Google LLC. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 class Size {
     constructor(width, height, widthUnit, heightUnit) {
         this.toString = jest.fn().mockImplementation(() => {
@@ -1491,9 +1534,11 @@ const initialize = function () {
             places: {
                 Autocomplete: Autocomplete,
                 SearchBox: SearchBox,
+                AutocompleteService: AutocompleteService,
+                PlacesService: PlacesService,
             },
             geometry: {
-                spherical: spherical
+                spherical: spherical,
             },
             Polygon: Polygon,
             Polyline: Polyline,
@@ -1508,6 +1553,10 @@ const initialize = function () {
             InfoWindow: InfoWindow_,
         },
     };
+};
+const places = {
+    AutocompleteService: AutocompleteService,
+    PlacesService: PlacesService,
 };
 
 exports.Circle = Circle;
@@ -1537,4 +1586,5 @@ exports.VisibleRegion = VisibleRegion;
 exports.event = event;
 exports.initialize = initialize;
 exports.mockInstances = mockInstances;
+exports.places = places;
 exports.spherical = spherical;

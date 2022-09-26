@@ -13,12 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
+/// <reference types="google.maps" />
 import { MVCObject } from "../maps/event/mvcobject";
-
-export class PlacesService extends MVCObject implements google.maps.Data {
-    constructor(opt?: google.maps.Data.DataOptions | null) {
-        super();
-    }
-    //  public getPlacePredictions = jest.fn().mockImplementation();
+export declare class PlacesService extends MVCObject implements google.maps.Data {
+    constructor(opt?: google.maps.Data.DataOptions | null);
 }
