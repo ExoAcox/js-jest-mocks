@@ -132,69 +132,15 @@ function __registerMockInstance(ctr, instance) {
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-const MapsEventListener = {
-    remove: jest.fn(),
-};
-const event = {
-    addDomListener: jest
-        .fn()
-        .mockImplementation((instance, eventName, handler, capture) => MapsEventListener),
-    addDomListenerOnce: jest
-        .fn()
-        .mockImplementation((instance, eventName, handler, capture) => MapsEventListener),
-    addListener: jest
-        .fn()
-        .mockImplementation((instance, eventName, handler) => MapsEventListener),
-    addListenerOnce: jest
-        .fn()
-        .mockImplementation((instance, eventName, handler) => MapsEventListener),
-    clearInstanceListeners: jest
-        .fn()
-        .mockImplementation((instance) => null),
-    clearListeners: jest
-        .fn()
-        .mockImplementation((instance, eventName) => null),
-    hasListeners: jest
-        .fn()
-        .mockImplementation((instance, eventName) => false),
-    removeListener: jest
-        .fn()
-        .mockImplementation((listener) => null),
-    trigger: jest
-        .fn()
-        .mockImplementation((instance, eventName, ...eventArgs) => null),
-};
-
-/**
- * Copyright 2022 Google LLC. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 class MVCObject {
     constructor() {
-        this.addListener = jest
-            .fn()
-            .mockImplementation((eventName, handler) => MapsEventListener);
-        this.bindTo = jest
-            .fn()
-            .mockImplementation((key, target, targetKey, noNotify) => null);
+        this.addListener = jest.fn().mockImplementation((eventName, handler) => handler());
+        this.bindTo = jest.fn().mockImplementation((key, target, targetKey, noNotify) => null);
         this.changed = jest.fn().mockImplementation((key) => null);
         this.get = jest.fn().mockImplementation((key) => { });
         this.notify = jest.fn().mockImplementation((key) => null);
-        this.set = jest
-            .fn()
-            .mockImplementation((key, value) => null);
+        this.set = jest.fn().mockImplementation((key, value) => null);
         this.setValues = jest.fn().mockImplementation((values) => null);
         this.unbind = jest.fn().mockImplementation((key) => null);
         this.unbindAll = jest.fn().mockImplementation(() => null);
@@ -771,6 +717,54 @@ class MapCanvasProjection extends MVCObject {
  */
 class MapPanes {
 }
+
+/**
+ * Copyright 2022 Google LLC. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+const MapsEventListener = {
+    remove: jest.fn(),
+};
+const event = {
+    addDomListener: jest
+        .fn()
+        .mockImplementation((instance, eventName, handler, capture) => MapsEventListener),
+    addDomListenerOnce: jest
+        .fn()
+        .mockImplementation((instance, eventName, handler, capture) => MapsEventListener),
+    addListener: jest
+        .fn()
+        .mockImplementation((instance, eventName, handler) => MapsEventListener),
+    addListenerOnce: jest
+        .fn()
+        .mockImplementation((instance, eventName, handler) => MapsEventListener),
+    clearInstanceListeners: jest
+        .fn()
+        .mockImplementation((instance) => null),
+    clearListeners: jest
+        .fn()
+        .mockImplementation((instance, eventName) => null),
+    hasListeners: jest
+        .fn()
+        .mockImplementation((instance, eventName) => false),
+    removeListener: jest
+        .fn()
+        .mockImplementation((listener) => null),
+    trigger: jest
+        .fn()
+        .mockImplementation((instance, eventName, ...eventArgs) => null),
+};
 
 /**
  * Copyright 2022 Google LLC. All Rights Reserved.
