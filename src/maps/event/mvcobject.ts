@@ -19,6 +19,10 @@ import { MapsEventListener } from "./event";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
+const event = {
+    latLng: { lat: () => 0, lng: () => 0 },
+};
+
 export class MVCObject implements google.maps.MVCObject {
     public static _mockClasses: typeof MVCObject[] = [];
     public static mockInstances: MVCObject[] = [];
@@ -40,7 +44,7 @@ export class MVCObject implements google.maps.MVCObject {
         MVCObject._mockClasses.push(ctor);
     }
 
-    public addListener = jest.fn().mockImplementation((eventName: string, handler: Function): google.maps.MapsEventListener => handler());
+    public addListener = jest.fn().mockImplementation((eventName: string, handler: Function): google.maps.MapsEventListener => handler(event));
     public bindTo = jest.fn().mockImplementation((key: string, target: MVCObject, targetKey?: string, noNotify?: boolean): void => null);
     public changed = jest.fn().mockImplementation((key: string): void => null);
     public get = jest.fn().mockImplementation((key: string): any => {});
